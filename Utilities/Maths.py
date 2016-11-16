@@ -28,7 +28,7 @@ class Maths:
     @staticmethod
     def convertToDecimal(fraction):
         fraction = str(fraction)
-        numbers = [1, 1]
+        numbers = []
         for item in fraction:
             if item == '/':
                 numbers = fraction.split('/')
