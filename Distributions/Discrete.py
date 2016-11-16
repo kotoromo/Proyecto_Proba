@@ -1,5 +1,5 @@
 from Distribution import *
-from Utilities import Maths
+from Utilities.Maths import Maths
 
 class Discrete(Distribution):
     type = "discrete"
@@ -7,10 +7,12 @@ class Discrete(Distribution):
     space = 0
 
     def __init__(self, n):
-        self.space = n
+        self.space = int(n)
 
-    def getDistribution(self):
+    def getProbability(self):
         return 1.0/float(self.space)
+
+    def getDistribution(self):pass
 
     def getMed(self):
         med = (1.0 / self.space) * Maths.infinite_sum(self.START, self.space, lambda x: x)
@@ -24,7 +26,7 @@ class Discrete(Distribution):
         var = (1.0/self.space)* Maths.infinite_sum(self.START, self.space, lambda x: (x-self.getMed())**2 )
         return var
 
-    def setSpace(self):
+    def setSpace(self, space):
         self.space = space
 
 

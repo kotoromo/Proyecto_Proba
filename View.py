@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from Tkinter import *
+
+from Views.Discrete_View import DiscreteView
 from Utilities import util
 from Views import Bernoulli_View
 from Views.Binomial_View import BinomialView
@@ -29,6 +31,7 @@ class View:
     binomial_view = BinomialView(master_frame)
     neg_binomial_view = NegativeBinomialView(master_frame)
     geometric_view = GeometricView(master_frame)
+    discrete_view = DiscreteView(master_frame)
 
     tools_elements = [
         [u"Información", util.Util.raise_not_defined],
@@ -84,7 +87,10 @@ class View:
                                                                              self.geometric_view)
                                            )
         self.distribution_menu.add_separator()
-        self.distribution_menu.add_command(label=u"Uniforme")
+        self.distribution_menu.add_command(label=u"Uniforme",
+                                           command=lambda: self.refresh_view(self.curr_view,
+                                                                             self.discrete_view)
+                                           )
 
     def draw_tools_menu(self, elements):
         for string, method in elements:
