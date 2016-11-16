@@ -4,6 +4,7 @@ from Tkinter import *
 from Utilities import util
 from Views import Bernoulli_View
 from Views.Binomial_View import BinomialView
+from Views.NegativeBinomial_View import NegativeBinomialView
 from Views import Distribution_View
 
 
@@ -25,6 +26,8 @@ class View:
 
     bernoulli_view = Bernoulli_View.BernoulliView(master_frame)
     binomial_view = BinomialView(master_frame)
+    neg_binomial_view = NegativeBinomialView(master_frame)
+
 
     tools_elements = [
         [u"Información", util.Util.raise_not_defined],
@@ -65,7 +68,11 @@ class View:
                                                                      self.binomial_view)
                                            )
 
-        self.distribution_menu.add_command(label=u"Binomial Negativa")
+        self.distribution_menu.add_command(label=u"Binomial Negativa",
+                                           command=lambda: self.refresh_view(self.curr_view,
+                                                                             self.neg_binomial_view)
+                                           )
+
         self.distribution_menu.add_separator()
         self.distribution_menu.add_command(label=u"Bernoulli",
                                            command=lambda: self.refresh_view(self.curr_view,
