@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from Distributions import Binomial
+from Distributions.Geometric import Geometric
 from Distribution_View import *
 from Views import Results_View
 from Tkinter import *
@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from Utilities.Maths import Maths
 
 
-class BinomialView(DistributionView, Frame):
+class GeometricView(DistributionView, Frame):
 
     def __init__(self, master):
         Frame.__init__(self, master)
@@ -21,7 +21,6 @@ class BinomialView(DistributionView, Frame):
 
         self.entry_1 = None
         self.entry_2 = None
-        self.entry_3 = None
 
         self.success = None
         self.essays = None
@@ -40,37 +39,31 @@ class BinomialView(DistributionView, Frame):
         self.frame.pack()
         frame = self.frame
 
-        succ_label = Label(frame, text="Número de Éxitos: ")
+        succ_label = Label(frame, text="Probabilidad de Éxito: ")
         essay_label = Label(frame, text="Número de Ensayos: ")
-        prob_label = Label(frame, text="Probabilidad de Éxito: ")
 
         succ_entry = Entry(frame)
         essay_entry = Entry(frame)
-        prob_entry = Entry(frame)
 
         self.entry_1 = succ_entry
         self.entry_2 = essay_entry
-        self.entry_3 = prob_entry
 
         submit_btn = Button(frame, text="Calcular", command=self.maketop)
         self.btn = submit_btn
 
-
         succ_label.grid(row=0, column=0)
         essay_label.grid(row=1, column=0)
-        prob_label.grid(row=2, column=0)
 
         succ_entry.grid(row=0, column=1)
         essay_entry.grid(row=1, column=1)
-        prob_entry.grid(row=2, column=1)
+
         submit_btn.grid(columnspan=2)
 
     def maketop(self):
         self.success = self.entry_1.get()
         self.essays = self.entry_2.get()
-        self.probability = Maths.convertToDecimal(self.entry_3.get())
 
-        binomial = Binomial.Binomial(self.entry_1.get(), self.entry_2.get(), self.entry_3.get())
+        binomial = Geometric(self.entry_1.get(), self.entry_2.get())
         self.binomial = binomial
 
         results_list = [
@@ -97,14 +90,14 @@ class BinomialView(DistributionView, Frame):
 
         plt.xlabel(r'$P[x=k]$')
         plt.ylabel(r'$k$')
-        plt.title(u'Distribución Binomial'+' $f_x(x; n, p)$')
-        plt.text(int(self.success)-1, self.probability-.1, r'$\mu_x='+str(self.med)+',\ \sigma^2_x='+str(self.var)+'$'+
+        plt.title(u'Distribución Geométrica'+' $f_x(x; n, p)$')
+        plt.text(float(self.success)-1, self.probability-.1, r'$\mu_x='+str(self.med)+',\ \sigma^2_x='+str(self.var)+'$'+
                  ', $f_x(x; n, p)='+str(self.probability)+'$')
 
-        plt.text(int(self.success), self.probability+0.03,
+        plt.text(float(self.success), self.probability+0.03,
                  r'$k=' + str(self.success) + ',\ P[x=k]=' + str(self.probability) + '$')
         plt.plot([float(self.success)], [self.probability], 'ro')
-        plt.axis([0, float(self.success) + 10, 0, float(self.probability) + 10])
+        plt.axis([0, float(self.success)+10, 0, float(self.probability)+10])
 
         list_aux = []
         list_k = []

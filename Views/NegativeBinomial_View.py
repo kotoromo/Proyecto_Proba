@@ -104,7 +104,7 @@ class NegativeBinomialView(DistributionView, Frame):
         plt.text(int(self.success), self.probability+0.03,
                  r'$k=' + str(self.success) + ',\ P[x=k]=' + str(self.probability) + '$')
         plt.plot([int(self.success)], [self.probability], 'ro')
-        plt.axis([0, float(self.success)+1, 0, float(self.probability)+1])
+        plt.axis([0, float(self.success) + 10, 0, float(self.probability) + 10])
 
         list_aux = []
         list_k = []

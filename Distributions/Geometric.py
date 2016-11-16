@@ -9,14 +9,18 @@ class Geometric(Distribution):
     x = 0
     n = 0
 
-    def __init__(self, success, x, n):
-        self.success = success
-        self.failure = 1-success
-        self.x = x
-        self.n = n
+    def __init__(self, success, n):
+        self.success = Maths.Maths.convertToDecimal(success)
+        self.failure = 1-self.success
+        self.n = Maths.Maths.convertToDecimal(n)
 
-    def getDistribution(self):
-        return ((1-self.success)**self.n-1)*self.success
+    def getProbability(self):
+        p = self.success
+        n = self.n
+
+        return ((1-p)**(n-1))*(p)
+
+    def getDistribution(self): pass
 
     def getMed(self):
         med = 1.0/self.success
@@ -31,7 +35,7 @@ class Geometric(Distribution):
         var = (1-self.success)/(self.success**2)
         return var
 
-    def setX(self, X):
+    def set_X(self, X):
         self.X = X
 
     def setSuccess(self, success):
