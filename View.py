@@ -10,6 +10,7 @@ from Views.NegativeBinomial_View import NegativeBinomialView
 from Views.Geometric_View import GeometricView
 from Views import Distribution_View
 from Views.Licence_View import License
+from Views.Info_View import InfoView
 
 
 class View:
@@ -94,7 +95,7 @@ class View:
     def draw_tools_menu(self):
 
         tools_elements = [
-            [u"Información", util.Util.raise_not_defined],
+            [u"Información", lambda: InfoView(self.master)],
             [u"Licenica", lambda: License(self.master)],
             [u"Ayuda", util.Util.raise_not_defined]
         ]
