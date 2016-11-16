@@ -14,9 +14,6 @@ class ResultsView:
         top.title("Resultados: ")
         labels_list = []
 
-        i = 0
-        j = 0
-
         for _list in self.inputs_list:
             labels_list.append(Label(top, text=_list[0]))
             labels_list.append(Label(top, text=_list[1]))

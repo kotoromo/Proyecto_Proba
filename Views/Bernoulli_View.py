@@ -3,7 +3,7 @@ from Distributions import Bernoulli
 from Distribution_View import *
 from Views import Results_View
 from Tkinter import *
-
+import matplotlib.pyplot as plt
 
 class BernoulliView(DistributionView, Frame):
 
@@ -15,6 +15,7 @@ class BernoulliView(DistributionView, Frame):
         self.results_list = None
         self.entry_1 = None
         self.entry_2 = None
+        self.success = None
 
     def get_frame(self):
         return self.frame
@@ -47,6 +48,8 @@ class BernoulliView(DistributionView, Frame):
 
 
     def maketop(self):
+        self.success = self.entry_1.get()
+
         bernoulli = Bernoulli.Bernoulli(self.entry_1.get(), self.entry_2.get())
 
         results_list = [
@@ -55,12 +58,25 @@ class BernoulliView(DistributionView, Frame):
             [u"Varianza: ", bernoulli.getVar()]
         ]
 
+        self.distribution = bernoulli.getDistribution()
+
         print "click!"
         print self.results_list
         top = Results_View.ResultsView(self.master, results_list)
+        self.plot()
 
 
     def clear(self):
         self.btn.grid_forget()
         self.frame.pack_forget()
+
+    def plot(self):
+        plt.xlabel('Smarts')
+        plt.ylabel('Probability')
+        plt.title('Histogram of IQ')
+        plt.text(60, .025, r'$\mu=100,\ \sigma=15$')
+        plt.plot([int(self.success)], [self.distribution], 'ro')
+        plt.axis([0, 1, 0, 1])
+        plt.show()
+
 
