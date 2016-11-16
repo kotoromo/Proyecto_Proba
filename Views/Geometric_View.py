@@ -91,13 +91,13 @@ class GeometricView(DistributionView, Frame):
         plt.xlabel(r'$P[x=k]$')
         plt.ylabel(r'$k$')
         plt.title(u'Distribución Geométrica'+' $f_x(x; n, p)$')
-        plt.text(float(self.success)-1, self.probability-.1, r'$\mu_x='+str(self.med)+',\ \sigma^2_x='+str(self.var)+'$'+
+        plt.text(Maths.convertToDecimal(self.success)-1, self.probability-.1, r'$\mu_x='+str(self.med)+',\ \sigma^2_x='+str(self.var)+'$'+
                  ', $f_x(x; n, p)='+str(self.probability)+'$')
 
-        plt.text(float(self.success), self.probability+0.03,
+        plt.text(Maths.convertToDecimal(self.success), self.probability+0.03,
                  r'$k=' + str(self.success) + ',\ P[x=k]=' + str(self.probability) + '$')
-        plt.plot([float(self.success)], [self.probability], 'ro')
-        plt.axis([0, float(self.success)+10, 0, float(self.probability)+10])
+        plt.plot([float(Maths.convertToDecimal(self.success))], [self.probability], 'ro')
+        plt.axis([0, float(Maths.convertToDecimal(self.success))+10, 0, float(self.probability)+10])
 
         list_aux = []
         list_k = []
