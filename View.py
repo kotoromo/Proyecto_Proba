@@ -3,6 +3,7 @@
 from Tkinter import *
 from Utilities import util
 from Views import Bernoulli_View
+from Views.Binomial_View import BinomialView
 from Views import Distribution_View
 
 
@@ -23,6 +24,7 @@ class View:
     curr_view = pic_label
 
     bernoulli_view = Bernoulli_View.BernoulliView(master_frame)
+    binomial_view = BinomialView(master_frame)
 
     tools_elements = [
         [u"Información", util.Util.raise_not_defined],
@@ -60,12 +62,15 @@ class View:
     def draw_distribution_menu(self, distribution_label_list, distribution_methods_list):
         self.distribution_menu.add_command(label=u"Binomial",
                                            command=lambda: self.refresh_view(self.curr_view,
-                                                                     self.bernoulli_view)
+                                                                     self.binomial_view)
                                            )
 
         self.distribution_menu.add_command(label=u"Binomial Negativa")
         self.distribution_menu.add_separator()
-        self.distribution_menu.add_command(label=u"Bernoulli")
+        self.distribution_menu.add_command(label=u"Bernoulli",
+                                           command=lambda: self.refresh_view(self.curr_view,
+                                                                             self.bernoulli_view)
+                                           )
         self.distribution_menu.add_command(label=u"Geométrica")
         self.distribution_menu.add_separator()
         self.distribution_menu.add_command(label=u"Uniforme")

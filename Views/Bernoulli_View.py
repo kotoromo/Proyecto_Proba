@@ -58,7 +58,7 @@ class BernoulliView(DistributionView, Frame):
         bernoulli = Bernoulli.Bernoulli(self.entry_1.get(), self.entry_2.get())
 
         results_list = [
-            [u"Distribución: ", bernoulli.getDistribution()],
+            [u"Probabilidad: ", bernoulli.getDistribution()],
             [u"Media: ", bernoulli.getMed()],
             [u"Varianza: ", bernoulli.getVar()]
         ]

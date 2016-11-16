@@ -1,26 +1,31 @@
 from Distribution import *
-from Utilities import Maths
+from Utilities.Maths import Maths
 
 class Binomial(Distribution):
     type = "binomial"
     START = 1
-    success = 0
-    failure = 1-success
+    x = 0
+    failure = 1-x
     x = 0
     n = 0
 
-    def __init__(self, success, x, n):
-        self.success = success
-        self.failure = 1-success
-        self.x = x
-        self.n = n
+    def __init__(self, x, n, p):
+        self.p = Maths.convertToDecimal(p)
+        self.failure = 1-self.p
+        self.x = int(x)
+        self.n = int(n)
+
+    def getProbability(self):
+        n = self.n
+        p = self.p
+        k = self.x
+        return float(Maths.Combination(n, k)*(p**k)*((1-p)**(n-k)))
 
     def getDistribution(self):
-        return Maths.Combination(self.n, self.x)*(self.success**self.x)*(1-self.success)**self.n-self.x
+        pass
 
     def getMed(self):
-        med = self.n*self.success
-
+        med = self.n*self.p
 
         return med
 
@@ -28,11 +33,14 @@ class Binomial(Distribution):
         return self.type
 
     def getVar(self):
-        var = self.n*self.success*(1-self.success)
+        var = self.n*self.p*(1-self.p)
         return var
 
-    def setX(self, X):
-        self.X = X
+    def set_n(self, n):
+        self.n = n
 
-    def setSuccess(self, success):
-        self.success = success
+    def set_p(self, p):
+        self.p = p
+
+    def set_X(self, x):
+        self.x = x

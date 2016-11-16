@@ -9,3 +9,9 @@ class DistributionView:
 
     @abstractmethod
     def clear(self): pass
+
+    @abstractmethod
+    def plot(self): pass
+
+    @abstractmethod
+    def maketop(self): pass
