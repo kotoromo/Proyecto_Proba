@@ -9,6 +9,7 @@ from Views.Binomial_View import BinomialView
 from Views.NegativeBinomial_View import NegativeBinomialView
 from Views.Geometric_View import GeometricView
 from Views import Distribution_View
+from Views.Licence_View import License
 
 
 class View:
@@ -24,6 +25,8 @@ class View:
     
     master_frame = Frame(master, bg="white", width=350, height=450)
 
+    tools_elements = None
+
     pic_label = Label(master_frame, image=fi_logo)
     curr_view = pic_label
 
@@ -33,11 +36,7 @@ class View:
     geometric_view = GeometricView(master_frame)
     discrete_view = DiscreteView(master_frame)
 
-    tools_elements = [
-        [u"Información", util.Util.raise_not_defined],
-        [u"Licenica", util.Util.raise_not_defined],
-        [u"Ayuda", util.Util.raise_not_defined]
-    ]
+
 
     tools_methods = [util.Util.raise_not_defined, util.Util.raise_not_defined, util.Util.raise_not_defined]
 
@@ -64,7 +63,7 @@ class View:
         self.menu.add_separator()
         self.menu.add_cascade(label=u"Herramientas", menu=self.tools_menu)
         self.draw_distribution_menu(None, None)
-        self.draw_tools_menu(self.tools_elements)
+        self.draw_tools_menu()
 
     def draw_distribution_menu(self, distribution_label_list, distribution_methods_list):
         self.distribution_menu.add_command(label=u"Binomial",
@@ -92,8 +91,17 @@ class View:
                                                                              self.discrete_view)
                                            )
 
-    def draw_tools_menu(self, elements):
-        for string, method in elements:
+    def draw_tools_menu(self):
+
+        tools_elements = [
+            [u"Información", util.Util.raise_not_defined],
+            [u"Licenica", lambda: License(self.master)],
+            [u"Ayuda", util.Util.raise_not_defined]
+        ]
+
+        self.tools_elements = tools_elements
+
+        for string, method in tools_elements:
             self.tools_menu.add_command(label=string, command=method)
 
     def set_current_view(self, view):
