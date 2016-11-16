@@ -16,6 +16,10 @@ class BernoulliView(DistributionView, Frame):
         self.entry_1 = None
         self.entry_2 = None
         self.success = None
+        self.ran_var = None
+        self.distribution = None
+        self.med = None
+        self.var = None
 
     def get_frame(self):
         return self.frame
@@ -49,6 +53,7 @@ class BernoulliView(DistributionView, Frame):
 
     def maketop(self):
         self.success = self.entry_1.get()
+        self.ran_var = self.entry_2.get()
 
         bernoulli = Bernoulli.Bernoulli(self.entry_1.get(), self.entry_2.get())
 
@@ -59,6 +64,8 @@ class BernoulliView(DistributionView, Frame):
         ]
 
         self.distribution = bernoulli.getDistribution()
+        self.med = bernoulli.getMed()
+        self.var = bernoulli.getVar()
 
         print "click!"
         print self.results_list
@@ -71,12 +78,16 @@ class BernoulliView(DistributionView, Frame):
         self.frame.pack_forget()
 
     def plot(self):
-        plt.xlabel('Smarts')
-        plt.ylabel('Probability')
-        plt.title('Histogram of IQ')
-        plt.text(60, .025, r'$\mu=100,\ \sigma=15$')
+        plt.xlabel(u'Éxitos')
+        plt.ylabel(u'Distribución')
+        plt.title(u'Distribución de Bernoulli'+' $f(k; p)$')
+        plt.text(int(self.success)-1, self.distribution, r'$\mu='+str(self.med)+',\ \sigma='+str(self.var)+'$'+
+                 ', $f(k; p)='+str(self.distribution)+'$')
+
+        plt.text(int(self.success), self.distribution+0.03,
+                 r'$p=' + str(self.success) + ',\ k=' + str(self.ran_var) + '$')
         plt.plot([int(self.success)], [self.distribution], 'ro')
-        plt.axis([0, 1, 0, 1])
+        plt.axis([0, 2, 0, 1])
         plt.show()
 
 
