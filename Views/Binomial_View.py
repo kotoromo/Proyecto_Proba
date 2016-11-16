@@ -93,6 +93,8 @@ class BinomialView(DistributionView, Frame):
         self.frame.pack_forget()
 
     def plot(self):
+        plt.grid(True)
+
         plt.xlabel(r'$P[x=k]$')
         plt.ylabel(r'$k$')
         plt.title(u'Distribución Binomial'+' $f(x; n, p)$')
@@ -104,13 +106,18 @@ class BinomialView(DistributionView, Frame):
         plt.plot([int(self.success)], [self.probability], 'ro')
         plt.axis([0, float(self.success)+1, 0, float(self.probability)+1])
 
-
+        list_aux = []
+        list_k = []
         for i in range(0, int(self.essays)):
             self.binomial.set_X(i)
             probability = self.binomial.getProbability()
+            list_aux.append(probability)
+            list_k.append(i)
             k = i
 
             i+=1
-            plt.plot([k], [probability], 'o')
+
+        plt.plot([list_k], [list_aux], marker='o', linestyle='--')
+
 
         plt.show()
