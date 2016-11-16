@@ -7,7 +7,7 @@ class License:
     def __init__(self, master):
         top = Toplevel(master)
         top.title("Licencia")
-        _text = open('./LICENSE.txt', 'r')
+        _text = open("C:\\Users\\lossi\\Dropbox\\Escuela\\Facultad de Ingenieria\\3er Semestre\\PROBABILIDAD\\Proyecto_Proba\\LICENSE.txt", 'r')
 
         scroll = Scrollbar(top)
         scroll.pack(side=RIGHT, fill=Y)
