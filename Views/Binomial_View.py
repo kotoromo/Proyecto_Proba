@@ -97,9 +97,9 @@ class BinomialView(DistributionView, Frame):
 
         plt.xlabel(r'$P[x=k]$')
         plt.ylabel(r'$k$')
-        plt.title(u'Distribución Binomial'+' $f(x; n, p)$')
-        plt.text(int(self.success)-1, self.probability-.1, r'$\mu='+str(self.med)+',\ \sigma='+str(self.var)+'$'+
-                 ', $f(x; n, p)='+str(self.probability)+'$')
+        plt.title(u'Distribución Binomial'+' $f_x(x; n, p)$')
+        plt.text(int(self.success)-1, self.probability-.1, r'$\mu_x='+str(self.med)+',\ \sigma^2_x='+str(self.var)+'$'+
+                 ', $f_x(x; n, p)='+str(self.probability)+'$')
 
         plt.text(int(self.success), self.probability+0.03,
                  r'$k=' + str(self.success) + ',\ P[x=k]=' + str(self.probability) + '$')

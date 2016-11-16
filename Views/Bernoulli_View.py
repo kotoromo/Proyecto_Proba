@@ -79,10 +79,10 @@ class BernoulliView(DistributionView, Frame):
 
     def plot(self):
         plt.xlabel(u'Éxitos')
-        plt.ylabel(u'Distribución')
-        plt.title(u'Distribución de Bernoulli'+' $f(k; p)$')
-        plt.text(int(self.success)-1, self.distribution, r'$\mu='+str(self.med)+',\ \sigma='+str(self.var)+'$'+
-                 ', $f(k; p)='+str(self.distribution)+'$')
+        plt.ylabel(u'Probabilidad')
+        plt.title(u'Distribución de Bernoulli'+' $f_x(k; p)$')
+        plt.text(int(self.success)-1, self.distribution, r'$\mu_x='+str(self.med)+',\ \sigma^2_x='+str(self.var)+'$'+
+                 ', $f_x(k; p)='+str(self.distribution)+'$')
 
         plt.text(int(self.success), self.distribution+0.03,
                  r'$p=' + str(self.success) + ',\ k=' + str(self.ran_var) + '$')
