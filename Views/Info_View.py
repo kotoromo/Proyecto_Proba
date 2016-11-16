@@ -15,7 +15,7 @@ class InfoView:
         label_2 = Label(master=labelframe_2, text=u"Facultad de Ingeniería, Universidad Autónoma de México")
 
         labelframe_3 = LabelFrame(top, text=u"Última Compilación:")
-        label_3 = Label(master=labelframe_3, text=u"16/11/2016 7:12 hrs")
+        label_3 = Label(master=labelframe_3, text=u"16/11/2016 9:03 hrs")
 
         labelframe.pack(fill="both", expand="yes")
         label_1.pack()
