@@ -1,5 +1,5 @@
 from Distribution import *
-from Utilities import Maths
+from Utilities.Maths import Maths
 
 class Bernoulli(Distribution):
     type = "bernoulli"
@@ -9,12 +9,17 @@ class Bernoulli(Distribution):
     x = 0.0
 
     def __init__(self, success, x):
-        self.success = success
+        self.success = int(success)
+        print "success: ", self.success
         self.failure = 1-self.success
-        self.x = x
+        self.x = Maths.convertToDecimal(x)
+        print "X", self.x
 
     def getDistribution(self):
-        return (self.success**self.x)*(1-self.success)**1-self.x
+        k = self.success
+        p = self.x
+
+        return (p**k)*(1-p)**(1-k)
 
     def getMed(self):
         med = self.success
