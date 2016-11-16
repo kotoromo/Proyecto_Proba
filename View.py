@@ -17,8 +17,8 @@ class View:
     master = Tk()
     master.resizable(width=False, height=False)
     master.minsize(width=350, height=450)
-    fi_logo = PhotoImage(file="img/logo-fi.gif")
-    icon = PhotoImage(file="img/icon.gif")
+    fi_logo = PhotoImage(file="./img/logo-fi.gif")
+    icon = PhotoImage(file="./img/icon.gif")
 
     menu = Menu(master, bg="darkgray", activebackground="silver")
     distribution_menu = Menu(menu, tearoff=0, bg="darkgray", activebackground="silver")
