@@ -6,6 +6,7 @@ class License:
 
     def __init__(self, master):
         top = Toplevel(master)
+        top.resizable(width=False, height=False)
         top.title("Licencia")
         _text = open("C:\\Users\\lossi\\Dropbox\\Escuela\\Facultad de Ingenieria\\3er Semestre\\PROBABILIDAD\\Proyecto_Proba\\LICENSE.txt", 'r')
 
