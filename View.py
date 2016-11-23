@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import subprocess
 from Tkinter import *
 
 from Views.Discrete_View import DiscreteView
@@ -37,6 +37,8 @@ class View:
     neg_binomial_view = NegativeBinomialView(master_frame)
     geometric_view = GeometricView(master_frame)
     discrete_view = DiscreteView(master_frame)
+
+    HELP_FILE = "C:\\Users\\lossi\\Desktop\\Proyecto_Proba\\RES\\doc.pdf"
 
 
 
@@ -98,7 +100,7 @@ class View:
         tools_elements = [
             [u"Información", lambda: InfoView(self.master)],
             [u"Licenica", lambda: License(self.master)],
-            [u"Ayuda", util.Util.raise_not_defined]
+            [u"Ayuda", lambda: self.show_pdf()]
         ]
 
         self.tools_elements = tools_elements
@@ -121,3 +123,6 @@ class View:
         self.set_current_view(new_view)
         print("Current view: ", self.curr_view)
         self.curr_view.draw()
+
+    def show_pdf(self):
+        subprocess.Popen([self.HELP_FILE], shell=True)
