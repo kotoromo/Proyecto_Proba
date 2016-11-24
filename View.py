@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import subprocess
 from Tkinter import *
-
 from Views.Discrete_View import DiscreteView
 from Utilities import util
 from Views import Bernoulli_View
@@ -99,7 +98,7 @@ class View:
 
         tools_elements = [
             [u"Información", lambda: InfoView(self.master)],
-            [u"Licenica", lambda: License(self.master)],
+            [u"Licencia", lambda: License(self.master)],
             [u"Ayuda", lambda: self.show_pdf()]
         ]
 
