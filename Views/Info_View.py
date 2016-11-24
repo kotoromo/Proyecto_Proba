@@ -13,7 +13,7 @@ class InfoView:
         label_1 = Label(labelframe, text=u"García Fierros Nicky"+'\n'
                                          +u"nick.garc.96@gmail.com \n https://github.com/kotoromo\n")
 
-        labelframe_4 = LabelFrame(top, text=u"Rexto Redactado Por:")
+        labelframe_4 = LabelFrame(top, text=u"Texto Redactado Por:")
         label_4 = Label(master=labelframe_4, text=u"\Luna Nuñez José Luis\n"+
                                          u"Pérez Palacios Ilse Mariel\nRamírez Cruz Ricardo Arturo"+
                                          u"\nGarcía Fierros Nicky")
